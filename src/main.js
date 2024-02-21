@@ -1,16 +1,13 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { renderImages } from './js/render-functions.js';
 import { getPhotoBySearch } from './js/pixabay-api.js';
 
 const formElem = document.querySelector('.search-form');
 const galleryEl = document.querySelector('.gallery-o');
 const loaderElem = document.querySelector('.loader');
-const lightbox = new SimpleLightbox('.gallery-o', {
-    captionDelay: 250,
-});
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -21,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function onSubmit(e) {
         e.preventDefault();
         showLoader();
-
+        galleryEl.innerHTML = '';
         const value = formElem.querySelector('.input-search').value;
         getPhotoBySearch(value)
             .then(data => {
@@ -33,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .finally(() => {
                 hideLoader();
             });
-        lightbox.refresh();
     }
 
     function renderError(error) {

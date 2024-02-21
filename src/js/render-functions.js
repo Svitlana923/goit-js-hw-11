@@ -1,6 +1,19 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+    
+const galleryEl = document.querySelector('.gallery-o');
+const formElem = document.querySelector('.search-form');
+const lightbox = new SimpleLightbox('.gallery-o');
 
+const options = {
+  captions: true,
+  captionSelector: 'img',
+  captionType: 'attr',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  animation: 250,
+};
 export function renderImages(array) {
-       const galleryEl = document.querySelector('.gallery-o');
     const markup = array
         .map(
         ({
@@ -28,7 +41,11 @@ export function renderImages(array) {
         }
         )
         .join('');
+    galleryEl.innerHTML = markup;
 
-    galleryEl.innerHTML = markup;   
+    const lightbox = new SimpleLightbox('.gallery-o', options);
+    lightbox.on('show.simplelightbox');
+    lightbox.refresh();
+    formElem.reset();
 }
-    
+
