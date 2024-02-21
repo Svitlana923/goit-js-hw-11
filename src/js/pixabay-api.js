@@ -1,4 +1,5 @@
- function getPhotoBySearch(searchValue) {
+
+export function getPhotoBySearch(searchValue) {
     const BASE_URL = 'https://pixabay.com/api/';
     const KEY = '42424645-ecd3f1048329df1dec069e6a8';
     const Query = `?key=${KEY}&q=${searchValue}`;

@@ -1,5 +1,5 @@
 
-function renderImages(array) {
+export function renderImages(array) {
        const galleryEl = document.querySelector('.gallery-o');
     const markup = array
         .map(
