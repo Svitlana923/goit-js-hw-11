@@ -43,7 +43,7 @@ export function renderImages(array) {
         .join('');
     galleryEl.innerHTML = markup;
 
-    const lightbox = new SimpleLightbox('.gallery a', options);
+    const lightbox = new SimpleLightbox('.gallery-o a', options);
     lightbox.on('show.simplelightbox');
     lightbox.refresh();
     formElem.reset();
